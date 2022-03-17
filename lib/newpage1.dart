@@ -44,7 +44,7 @@ class _newpageState extends State<newpage> {
       appBar: new AppBar(
         title: new Text("Calculator"),
       ), //AppBar
-      backgroundColor: Colors.white38,
+      backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
           Expanded(
@@ -76,94 +76,98 @@ class _newpageState extends State<newpage> {
           ),
           Expanded(
             flex: 3,
-            child: Container(
-              child: GridView.builder(
-                  itemCount: buttons.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4),
-                  itemBuilder: (BuildContext context, int index) {
-                    // Clear Button
-                    if (index == 0) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            userInput = '';
-                            answer = '0';
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
+            child: Material(
+              elevation: 5,
+              child: Container(
+                child: GridView.builder(
+                    itemCount: buttons.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4),
+                    itemBuilder: (BuildContext context, int index) {
+                      // Clear Button
+                      if (index == 0) {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              userInput = '';
+                              answer = '0';
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.black54,
+                          textColor: Colors.white,
+                        );
+                      }
 
-                    // +/- button
-                    else if (index == 1) {
-                      return MyButton(
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // % Button
-                    else if (index == 2) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            userInput += buttons[index];
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // Delete Button
-                    else if (index == 3) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            userInput =
-                                userInput.substring(0, userInput.length - 1);
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
-                      );
-                    }
-                    // Equal_to Button
-                    else if (index == 18) {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            equalPressed();
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: Colors.orange[700],
-                        textColor: Colors.white,
-                      );
-                    }
+                      // +/- button
+                      else if (index == 1) {
+                        return MyButton(
+                          buttonText: buttons[index],
+                          color: Colors.black54,
+                          textColor: Colors.white,
+                        );
+                      }
+                      // % Button
+                      else if (index == 2) {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              userInput += buttons[index];
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.black54,
+                          textColor: Colors.white,
+                        );
+                      }
+                      // Delete Button
+                      else if (index == 3) {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              userInput =
+                                  userInput.substring(0, userInput.length - 1);
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.black54,
+                          textColor: Colors.white,
+                        );
+                      }
+                      // Equal_to Button
+                      else if (index == 18) {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              equalPressed();
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: Colors.black54,
+                          textColor: Colors.white,
+                        );
+                      }
 
-                    // other buttons
-                    else {
-                      return MyButton(
-                        buttontapped: () {
-                          setState(() {
-                            userInput += buttons[index];
-                          });
-                        },
-                        buttonText: buttons[index],
-                        color: isOperator(buttons[index])
-                            ? Colors.blueAccent
-                            : Colors.white,
-                        textColor: isOperator(buttons[index])
-                            ? Colors.white
-                            : Colors.black,
-                      );
-                    }
-                  }), // GridView.builder
+                      // other buttons
+                      else {
+                        return MyButton(
+                          buttontapped: () {
+                            setState(() {
+                              userInput += buttons[index];
+                            });
+                          },
+                          buttonText: buttons[index],
+                          color: isOperator(buttons[index])
+                              ? Colors.black54
+
+                              : Colors.white,
+                          textColor: isOperator(buttons[index])
+                              ? Colors.white
+                              : Colors.black,
+                        );
+                      }
+                    }), // GridView.builder
+              ),
             ),
           ),
         ],
